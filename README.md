@@ -67,6 +67,6 @@ This script is intended for educational purposes only. It should only be used to
 
 ### Links
 
-- **GitHub Repository**: [https://github.com/your-username/video-auto-loader-downloader](https://github.com/your-username/video-auto-loader-downloader)
+- **GitHub Repository**: [[https://github.com/your-username/video-auto-loader-downloader](https://github.com/your-username/video-auto-loader-downloader](https://github.com/ProbablyXS/auto-video-downloader-ts-merge))
 - **Tampermonkey**: [https://www.tampermonkey.net/](https://www.tampermonkey.net/)
 - **Greasemonkey**: [https://www.greasespot.net/](https://www.greasespot.net/)
