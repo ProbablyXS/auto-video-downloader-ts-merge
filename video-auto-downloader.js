@@ -12,8 +12,8 @@
 // ==/UserScript==
 
 (function () {
-     // URL du fichier version.json sur GitHub
-    const versionUrl = "https://raw.githubusercontent.com/ton-utilisateur/ton-dépôt/main/version.json";
+    // URL du fichier version.json sur GitHub
+    const versionUrl = "https://raw.githubusercontent.com/ProbablyXS/auto-video-downloader-ts-merge/main/version.json";
 
     // Fonction pour vérifier si une mise à jour est disponible
     async function checkForUpdates() {
