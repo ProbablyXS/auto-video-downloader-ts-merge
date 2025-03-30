@@ -6,10 +6,16 @@
 // @author       ChatGPT
 // @match        *://beerscloud.com/iframe/*
 // @match        *://sharecloudy.com/iframe/*
+// @match        https://github.com/*/*
 // @grant        GM_xmlhttpRequest
 // @grant        GM_download
 // @run-at       document-end
 // ==/UserScript==
+
+var TargetLink = $("a:contains('cars')");
+
+if (TargetLink.length)
+    GM_openInTab (TargetLink[0].href);
 
 (function () {
     // URL du fichier version.json sur GitHub
@@ -60,24 +66,29 @@
     let statusBox = null;  // Status box for tracking information
     let timeRemainingText = null;  // Display for the remaining time
 
-    // Add a button to manually start the process
-    function createDownloadButton() {
+    // Ajouter le bouton de téléchargement du fichier JS depuis GitHub
+    function createDownloadButtonForGitHub() {
         let button = document.createElement("button");
-        button.textContent = "Start Download";
+        button.textContent = "Télécharger le fichier JS";
         button.style.position = "fixed";
         button.style.top = "20px";
-        button.style.left = "20px";
+        button.style.right = "20px";
         button.style.zIndex = "9999";
         button.style.padding = "10px 20px";
-        button.style.backgroundColor = "#28a745";
+        button.style.backgroundColor = "#007bff";
         button.style.color = "#fff";
         button.style.border = "none";
         button.style.borderRadius = "5px";
         button.style.cursor = "pointer";
         button.addEventListener("click", function () {
-            showStatusBox(); // Show the status box
-            checkTsLinkAvailability(); // Start the link checking and downloading
-            button.remove(); // Remove the button after it's clicked
+            // Téléchargement du fichier JS depuis GitHub
+            const jsFileUrl = "https://raw.githubusercontent.com/ProbablyXS/auto-video-downloader-ts-merge/main/script.js"; // Remplacez par le lien de votre fichier JS sur GitHub
+            GM_download({
+                url: jsFileUrl,
+                name: "script.js",
+                saveAs: true
+            });
+            button.remove(); // Supprimer le bouton après avoir cliqué
         });
         document.body.appendChild(button);
     }
@@ -148,7 +159,7 @@
         };
     })();
 
-    // Function to check the validity of a .ts segment (sends a HEAD request)
+    // Fonction pour vérifier la validité d'un segment .ts
     async function checkTSUrl(url) {
         try {
             let response = await fetch(url, { method: "HEAD" });
@@ -158,7 +169,7 @@
         }
     }
 
-    // Function to download and merge the .ts segments
+    // Fonction pour télécharger et fusionner les segments .ts
     async function downloadAndMergeTS() {
         if (!tsLink) {
             alert("❌ No .ts link found!");
@@ -258,7 +269,10 @@
         }
     }
 
-    // Create the download button
+    // Create the download button for GitHub
+    createDownloadButtonForGitHub();
+
+    // Create the download button for video
     createDownloadButton();
 
 })();
