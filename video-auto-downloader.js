@@ -11,11 +11,6 @@
 // @run-at       document-end
 // ==/UserScript==
 
-var TargetLink = $("a:contains('cars')");
-
-if (TargetLink.length)
-    GM_openInTab (TargetLink[0].href);
-
 (function () {
     // URL du fichier version.json sur GitHub
     const versionUrl = "https://raw.githubusercontent.com/ProbablyXS/auto-video-downloader-ts-merge/main/version.json";
